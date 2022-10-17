@@ -40,7 +40,7 @@ li:first-letter {
 
 .weather-app {
   padding: 20px;
-  border: 1px solid red;
+  border: 1px solid grey;
   border-radius: 10px;
 }
 
@@ -50,12 +50,13 @@ li:first-letter {
 
 .weather-temp img {
   margin-right: 5px;
-  height: 64px;
-  width: 64px;
+  height: 74px;
+  width: 74px;
+  margin-top: -45px;
 }
 
 .weather-temp strong {
-  color: purple;
+  color: black;
   font-size: 64px;
   font-weight: bold;
   line-height: 1;
@@ -68,7 +69,7 @@ li:first-letter {
 }
 
 .weather-temp .active {
-  color: purple;
+  color: black;
   cursor: default;
   text-decoration: none !important;
 }
@@ -78,7 +79,7 @@ li:first-letter {
 }
 
 .weather-temp .off {
-  color: black;
+  color: blue;
   cursor: default;
   text-decoration: none !important;
 }
