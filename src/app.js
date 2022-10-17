@@ -31,7 +31,9 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  celciusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -57,7 +59,37 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("London");
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  //remove the active class to the celcius link
+  celciusLink.classList.remove("active");
+  celciusLink.classList.add("off");
+  farenheitLink.classList.add("active");
+  farenheitLink.classList.remove("off");
+  let farenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  celciusLink.classList.add("active");
+  celciusLink.classList.remove("off");
+  farenheitLink.classList.remove("active");
+  farenheitLink.classList.add("off");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+
+let celciusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
+
+search("Malaga");
